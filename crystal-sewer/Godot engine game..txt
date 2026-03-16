@@ -1,0 +1,238 @@
+Godot engine game.
+
+A Silly first-Person Horror game where an experimental Stickman from a research facility has to capture samples of a crystalline creature that has escaped. 
+
+Goal: The Stickman has to gather 8 orbs in order to open a door and escape.
+
+Obstacles/ Enemies: Crystalline Creature
+
+A creature that escaped from a research facility and ran into the sewer. This creature can only go into a straight line from each corridor until you reach 4 orbs then it evolves to a bipedal creature that can stalks the sewers. 
+
+
+Orb and Creature Mechanics
+1. Orb Appearance & Placement
+Visuals: Glowing, crystalline spheres, hovering slightly, pulsing softly with sound.
+
+Locations:
+
+Scattered in dead-end corridors, hidden behind pipes or gates, or in rooms requiring environmental puzzle solving.
+
+Some orbs are in areas that are safe early game, but become dangerous post-evolution.
+
+
+
+The environmental puzzles range from easy to hard:
+
+Easy: Valve Turning- turn valves in the correct order
+Medium: The crystal will be locked behind a door that require a pass code 
+Hard: Using an object to get another object in order to open a path to get a crystal
+
+Additional Puzzle Ideas
+🔶 (Medium) Light Beam Reflection Puzzle
+Concept: Use reflective crystal shards or mirrors to direct a beam of light to a receptor that opens a gate.
+
+Gameplay:
+
+Player can rotate or move mirror-like crystals.
+
+Only when light hits the right receptor does the crystal orb get revealed.
+
+Some mirrors may be cracked (fakeouts), or hidden under slime/grime.
+
+Twist:
+
+While adjusting mirrors, creature briefly appears in the reflections.
+
+Tension: if beam stays active too long, it heats up and makes noise.
+
+🔷 (Medium/Hard) Circuit Relay Puzzle
+Concept: Player must rewire a fuse box by connecting colored wires or toggling switches in the correct configuration.
+
+Gameplay:
+
+Sparks and flickering lights as feedback.
+
+Cables can be followed visually through pipes or walls.
+
+Connect red to red, green to green, etc. with misleading extras.
+
+Twist:
+
+Turning on power may also open other areas... including where the creature is waiting.
+
+🟣 (Easy-Medium) Pipe Pressure Puzzle
+Concept: The orb is behind a waterlogged gate. You must divert or reduce pressure in pipes to drain the chamber.
+
+Gameplay:
+
+Pipes hiss and rumble — you rotate wheels or close vents.
+
+Gauges fill or drop depending on your inputs.
+
+When water fully drains, orb is reachable.
+
+
+🔺 (Hard) Sound Pattern Puzzle
+Concept: Listen to a sequence of tones or drips, then replicate it on a sound panel or chime set.
+
+Gameplay:
+
+Player listens to a 4–5 note pattern.
+
+Then taps on pipes or crystal shards that each make a sound.
+
+Must repeat pattern to open the orb chamber.
+
+Twist:
+
+Wrong sound triggers an echo — alerts creature.
+
+🟢 (Medium) Crystal Growth Puzzle
+Concept: Feed energy or liquid to a crystal vine to grow it along a wall, eventually breaking through a weak grate.
+
+Gameplay:
+
+Redirect a glowing chemical or charge from a canister.
+
+Crystal slowly grows (visible animation).
+
+Once it reaches the grate, it shatters it.
+
+Visuals:
+
+Vines pulse with light when fed.
+
+Orbs grow out of them — living crystals.
+
+🔘 (Easy) Color Matching Lock
+Concept: Colored valves or dials must be rotated so their crystals match a color pattern nearby (e.g., red-blue-green).
+
+Gameplay:
+
+Crystals light up when color is correct.
+
+Feedback through glowing lights or hums.
+
+Can be randomized per playthrough.
+
+🧩 Bonus: Optional Lore Puzzle (for secrets or upgrades)
+Collect logbooks, crystal samples, or broken keycards.
+
+Arrange them in a lab console to reconstruct the origin of the creature.
+
+Completing it gives you a temporary crystal light shield or reveals a secret orb.
+
+
+
+
+2. Orb Collection
+Player Interaction:
+
+Walk up and press E (or interact key).
+
+Brief glow + chime sound.
+
+Orb disappears and a counter appears (Orbs: 3/8).
+
+UI Feedback:
+
+Orb counter in HUD.
+
+Mini radar or vague sonar pinging if needed for accessibility (toggleable).
+
+
+
+3. Progressive Danger Mechanic
+Each orb collected escalates danger:
+
+0–3 Orbs:
+
+Crystalline creature moves in straight lines, only turns at corridor junctions.
+
+Audible crystal crunching sounds when it's near.
+
+You can predict and avoid it by watching line-of-sight patterns.
+
+
+4 Orbs:
+
+EVOLUTION TRIGGERED: Creature becomes humanoid (bipedal).
+
+Now stalks player using semi-random patrols.
+
+Can crouch, wait, or backtrack.
+
+Emits low crystal hum; footsteps audible.
+
+
+5–7 Orbs:
+
+Creature gains increased speed and can chase when line-of-sight is triggered.
+
+Will occasionally "teleport" or phase to nearby shadows (visual cue: shimmer).
+
+
+8 Orbs:
+
+Door is powered and now accessible.
+
+Creature becomes enraged: ambient lights flicker, sewer shakes, loud screeching.
+
+Final chase segment to the door.
+  
+
+Floorplan of the Sewer:
+
+								  ORB 2
+								   [■]
+									|
+									|
+									|
+ORB 1  [■] ---- Short Tunnel ---- HUB ---- Short Tunnel ---- [■]  ORB 3
+									|
+									|
+									|
+								  ORB 4
+
+				Outer Ring Corridor (~150m radius, 8-10m wide)
+					   -----------------------------------
+					  /                                   \
+					 /                                     \
+					/                                       \
+		 ORB 8 [■] /                                         \ [■] ORB 5
+				  /                                           \
+				 /                                             \
+				/                                               \
+			   /                                                 \
+			  /                                                   \
+	ORB 7 [■] \                                                   / [■] ORB 6
+			   \                                                 /
+				\                                               /
+				 \                                             /
+				  \                                           /
+				   \_________________________________________/
+								HUB in Center
+
+					 HUB ROOM (~20x20m), access to:
+					 - Ring corridor (main exits)
+					 - Maintenance tunnels (shortcuts)
+					 - Valve puzzle room
+					 - Final exit door
+
+EXAMPLE SHORTCUT TUNNELS:
+- ORB 1 → ORB 7
+- ORB 2 → ORB 6
+- ORB 3 → ORB 5
+
+
+
+Suggested development flow:
+Phase	Focus
+1	Player controller + basic UI + interaction system
+2	Basic graybox environment (ring corridors + hub + rooms)
+3	Basic AI movement + early player flow testing
+4	Add puzzles (valves, doors, object collection)
+5	Refine AI (mutation behavior, stalking logic)
+6	Art pass on environment (models, textures, sounds)
+7	Polish player feedback (screen shake, SFX, music tension)
+8	Full test → iterate → final release

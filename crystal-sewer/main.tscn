@@ -1,0 +1,268 @@
+[gd_scene load_steps=4 format=3 uid="uid://l03561t78467"]
+
+[ext_resource type="PackedScene" uid="uid://c6f84bjtteb21" path="res://game_manager.tscn" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c0vvd8g71m70x" path="res://stickman.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://beiowimu2adh3" path="res://Orb.tscn" id="2_0xm2m"]
+
+[node name="Main" type="Node"]
+
+[node name="Game Manager" parent="." instance=ExtResource("1_h2yge")]
+
+[node name="UI" type="CanvasLayer" parent="Game Manager"]
+
+[node name="HUD" type="Control" parent="Game Manager/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -2.0
+offset_right = 1152.0
+offset_bottom = 530.0
+
+[node name="OrbCounter" type="Label" parent="Game Manager/UI/HUD"]
+layout_mode = 0
+offset_top = 54.0
+offset_right = 228.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 20
+uppercase = true
+
+[node name="Pause Menu" type="Control" parent="Game Manager/UI"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 493.0
+tooltip_text = " "
+
+[node name="Resume" type="Button" parent="Game Manager/UI/Pause Menu"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 330.0
+offset_right = 490.0
+offset_bottom = 392.0
+text = "RESUME"
+
+[node name="Quit" type="Button" parent="Game Manager/UI/Pause Menu"]
+layout_mode = 0
+offset_left = 773.0
+offset_top = 332.0
+offset_right = 928.0
+offset_bottom = 389.0
+text = "QUIT"
+
+[node name="Sewer Level" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="wall" type="CSGBox3D" parent="Sewer Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 351.2, 160.5, 0.149979)
+size = Vector3(1, 322.8, 701.5)
+
+[node name="wall2" type="CSGBox3D" parent="Sewer Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -348.95, 159.3, 0.700043)
+size = Vector3(0.1, 325.4, 699.8)
+
+[node name="wall3" type="CSGBox3D" parent="Sewer Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0499878, 160.75, -349.55)
+size = Vector3(702.5, 322.5, 0.1)
+
+[node name="wall4" type="CSGBox3D" parent="Sewer Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 160.65, 350.45)
+size = Vector3(699.6, 323.9, 0.1)
+
+[node name="Sewer Floor" type="CSGBox3D" parent="Sewer Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -1.6, 0)
+use_collision = true
+size = Vector3(700, 1, 700)
+
+[node name="floor2" type="CSGBox3D" parent="Sewer Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 97.1, -1.60002)
+size = Vector3(692.5, 1.6, 694.2)
+
+[node name="Ceilling" type="CSGBox3D" parent="Sewer Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64999, 322, -0.199997)
+size = Vector3(700.1, 1.6, 701.6)
+
+[node name="Stickman" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 1.4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4, 0)
+shadow_enabled = true
+omni_range = 51.725
+
+[node name="Orb" parent="." groups=["orbs"] instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0.2, 2.2)
+
+[node name="Orb2" parent="." groups=["orbs"] instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0.2, -2.5)
+
+[node name="Orb3" parent="." groups=["orbs"] instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0.2, 4.6)
+
+[node name="Orb4" parent="." groups=["orbs"] instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0.2, 4.7)
+
+[node name="Orb5" parent="." groups=["orbs"] instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3, 0.2, -2.5)
+
+[node name="Orb6" parent="." groups=["orbs"] instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.2, 2.2)
+
+[node name="Orb7" parent="." groups=["orbs"] instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0.2, -0.4)
+
+[node name="Orb8" parent="." groups=["orbs"] instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0.2, 6.6)
+
+[node name="Hub walls" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hub walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78814e-07, 11.7, 0.0500001)
+size = Vector3(22.4, 1, 22.1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Hub walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.55, 5.1, 0.150001)
+size = Vector3(1.3, 12.2, 21.9)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Hub walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0500008, 5, -10.5)
+size = Vector3(1, 12.4, 20.7)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Hub walls"]
+transform = Transform3D(-1, 1.49012e-08, 1.49012e-08, 0, 1, 0, -1.49012e-08, -2.64698e-23, -1, -10.75, 5, 0.0499993)
+size = Vector3(0.3, 12, 22.1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Hub walls"]
+transform = Transform3D(2.88102e-08, -6.5135e-16, -1, 0, 1, 0, 1, -1.49012e-08, 2.88102e-08, -0.05, 5.1, 10.65)
+size = Vector3(0.9, 12.2, 20.5)
+
+[node name="cuts" type="CSGCombiner3D" parent="Hub walls"]
+transform = Transform3D(-4.47035e-08, -1, -4.37114e-08, -1.49161e-15, -4.37114e-08, 1, -1, 4.47035e-08, 8.88171e-16, 37.2944, 4.95, 0.947512)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Hub walls/cuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.97044e-23, 0, 2.06728e-23, 1, -5.96046e-08, -0.279198, -0.6)
+radius = 6.4
+height = 55.0139
+sides = 6
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Hub walls/cuts"]
+transform = Transform3D(-4.37114e-08, -1, -4.37109e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 45.245, 36.5195, -0.899998)
+radius = 5.9
+height = 68.5356
+sides = 6
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Hub walls/cuts"]
+transform = Transform3D(-1, 8.74223e-08, 2.30914e-15, -8.74223e-08, -1, -8.74228e-08, -6.80457e-15, -8.74228e-08, 1, 0.200004, 73.67, -1.1)
+radius = 5.7
+height = 52.0488
+sides = 6
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Hub walls/cuts"]
+transform = Transform3D(-4.47035e-08, 1, 4.37114e-08, -1, -4.47035e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -29.3251, 36.7444, -1.7)
+radius = 5.5
+height = 40.7497
+sides = 6
+
+[node name="Room" type="CSGCombiner3D" parent="Hub walls"]
+use_collision = true
+
+[node name="Wall" type="CSGBox3D" parent="Hub walls/Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 8, -78.2)
+size = Vector3(156.8, 17, 0.6)
+
+[node name="Wall2" type="CSGBox3D" parent="Hub walls/Room"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 79.6, 8, -213.9)
+size = Vector3(271.6, 17, 0.6)
+
+[node name="Wall3" type="CSGBox3D" parent="Hub walls/Room"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -76.3, 7.85, -213.45)
+size = Vector3(271.7, 16.7, 0.6)
+
+[node name="Room2" type="CSGCombiner3D" parent="Hub walls"]
+use_collision = true
+
+[node name="Wall" type="CSGBox3D" parent="Hub walls/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -203.6, 8, 6.6)
+size = Vector3(280.4, 17, 0.6)
+
+[node name="Door2" type="CSGBox3D" parent="Hub walls/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.1, 5.75, 6.6)
+operation = 2
+size = Vector3(8.4, 12.5, 0.6)
+
+[node name="Wall4" type="CSGBox3D" parent="Hub walls/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -204.9, 8, -4.89999)
+size = Vector3(281.8, 17, 0.6)
+
+[node name="Door" type="CSGBox3D" parent="Hub walls/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.95, 5.95, -4.89999)
+operation = 2
+size = Vector3(10.9, 12.9, 0.6)
+
+[node name="Wall2" type="CSGBox3D" parent="Hub walls/Room2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -63.6, 8, -40.5)
+size = Vector3(72.2, 17, 0.6)
+
+[node name="Wall3" type="CSGBox3D" parent="Hub walls/Room2"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -63.3, 7.85, 148.15)
+size = Vector3(284.3, 16.7, 0.6)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Hub walls"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -3.38813e-21, -4.37114e-08, -1, -1, -4.37114e-08, 1.91077e-15, 37.618, 2.75004, 0.664709)
+operation = 2
+radius = 4.4
+height = 55.6759
+sides = 6
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Hub walls"]
+transform = Transform3D(1, 0, -6.98802e-21, 1.05879e-21, -4.47035e-08, -1, 0, 1, -4.47035e-08, 0.8, 2.85004, -44.0443)
+operation = 2
+radius = 4.4
+height = 69.3152
+sides = 6
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Hub walls"]
+transform = Transform3D(-4.37112e-08, 1, -5.96047e-08, -5.92923e-21, -4.47035e-08, -1, -1, -4.37108e-08, -1.49012e-08, -36.3986, 2.95005, 0.464711)
+operation = 2
+radius = 4.6
+height = 52.3098
+sides = 6
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Hub walls"]
+transform = Transform3D(1, 5.96047e-08, 5.96047e-08, -5.96047e-08, 7.45056e-08, 1, 4.47036e-08, -1, 7.45056e-08, 0.528613, 2.85004, 30.7611)
+operation = 2
+radius = 4.4
+height = 41.904
+sides = 6
+
+[node name="CSGPolygon3D" type="CSGCylinder3D" parent="Hub walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 5.02967, -4.4)
+radius = 0.9
+height = 12.2531
+
+[node name="CSGPolygon3D3" type="CSGCylinder3D" parent="Hub walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 5.03125, -4.4)
+radius = 0.9
+height = 12.2875
+
+[node name="CSGPolygon3D2" type="CSGCylinder3D" parent="Hub walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.3, 6.05781, 4.8)
+radius = 0.9
+height = 10.3594
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Hub walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 7.4, 95.1)
+radius = 45.7
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Hub walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.7, 3.20001, 160.604)
+operation = 2
+radius = 4.1
+height = 1.82512
+sides = 6
+
+[connection signal="pressed" from="Game Manager/UI/Pause Menu/Resume" to="Game Manager" method="_on_resume_pressed"]
+[connection signal="pressed" from="Game Manager/UI/Pause Menu/Quit" to="Game Manager" method="_on_quit_pressed"]

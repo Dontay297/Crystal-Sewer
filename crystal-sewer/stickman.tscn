@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0vvd8g71m70x"]
+
+[ext_resource type="Script" uid="uid://cax8anudeggnb" path="res://Stickman.cs" id="1_qlvw8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qlvw8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iu0mg"]
+radial_segments = 20
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iu0mg"]
+height = 1.55941
+
+[sub_resource type="Animation" id="Animation_iu0mg"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qlvw8"]
+resource_name = "StandingToCrouch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, -0.3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xlwhs"]
+_data = {
+&"RESET": SubResource("Animation_iu0mg"),
+&"StandingToCrouch": SubResource("Animation_qlvw8")
+}
+
+[node name="Stickman" type="CharacterBody3D"]
+script = ExtResource("1_qlvw8")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, 0, 0.5, 0)
+
+[node name="View" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0)
+
+[node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qlvw8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_iu0mg")
+
+[node name="CrouchingShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.218476, 0)
+shape = SubResource("CapsuleShape3D_iu0mg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xlwhs")
+}
