@@ -1,0 +1,9 @@
+Lord Of The Mysteries Beyonder Potion List Project
+
+The Idea: Create a list of all of the Beyonder Characteristics, so that I can Implement a menu system to inspect a potion and get a description.
+
+ideas: make a potion class with a name and description. Create an advancement Ritual class with a name and des. Create either an array list or a stack to add potions in to their respective list.
+
+Potion class: Done 
+Advancement ritual class: not complete 
+Sequence List: Half way done
